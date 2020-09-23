@@ -599,9 +599,12 @@ func (t *ServiceResource) registerServiceInstance(
 		return
 	}
 
-
 	svc, ok := t.serviceMap[key]
 	if !ok {
+		return
+	}
+
+	if len(endpoints.Subsets) == 0 {
 		return
 	}
 
